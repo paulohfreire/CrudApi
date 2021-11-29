@@ -1,9 +1,4 @@
 ﻿using CrudApi.Domain.Validation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CrudApi.Domain.Entities
 {
@@ -42,13 +37,13 @@ namespace CrudApi.Domain.Entities
                 "Nome inválido. Informar nome completo com 3 caracteres ou mais.");
             DomainExceptionValidation.When(string.IsNullOrEmpty(description),
                "Descrição é campo obrigatório.");
-            DomainExceptionValidation.When(name.Length < 5,
+            DomainExceptionValidation.When(description.Length < 5,
                 "Descrição inválida. Informar pelo menos 5 caracteres ou mais.");
             DomainExceptionValidation.When(price < 0,
                 "Preço inválido.");
             DomainExceptionValidation.When(stock < 0,
                 "Estoque inválido.");
-            DomainExceptionValidation.When(image.Length < 250,
+            DomainExceptionValidation.When(image?.Length < 250,
                "Imagem inválida. Tente novamente.");
 
             Name = name;
