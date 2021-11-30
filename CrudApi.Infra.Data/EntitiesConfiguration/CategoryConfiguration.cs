@@ -11,6 +11,12 @@ namespace CrudApi.Infra.Data.EntitiesConfiguration
             builder.HasKey(t => t.Id);
             builder.Property(p => p.Name).HasMaxLength(100).IsRequired();
 
+            builder.HasData(
+                new Category(1, "Eletrônicos"),
+                new Category(2, "Acessórios"),
+                new Category(3, "Outros")
+                );
+
         }
     }
 }

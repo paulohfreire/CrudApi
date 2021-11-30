@@ -1,7 +1,7 @@
 ﻿using CrudApi.Domain.Entities;
 using CrudApi.Domain.Interfaces;
 using CrudApi.Infra.Data.Context;
-using System;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -24,22 +24,32 @@ namespace CrudApi.Infra.Data.Repositories
 
         public async Task<Product> GetByIdAsync(int? id)
         {
-            throw new NotImplementedException();
+            return await _productContext.Products.FindAsync(id);
+        }
+
+        public async Task<Product> GetProductsCategoryAsync(int? id)
+        {
+            return await _productContext.Products.Include(c => c.Category)
+                .SingleOrDefaultAsync(p => p.Id == id);
         }
 
         public async Task<IEnumerable<Product>> GetProductsAsync()
         {
-            throw new NotImplementedException();
+            return await _productContext.Products.ToListAsync();
         }
 
         public async Task<Product> RemoveAsync(Product product)
         {
-            throw new NotImplementedException();
+            _productContext.Remove(product);
+            await _productContext.SaveChangesAsync();
+            return product;
         }
 
         public async Task<Product> UpdateAsync(Product product)
         {
-            throw new NotImplementedException();
+            _productContext.Update(product);
+            await _productContext.SaveChangesAsync();
+            return product;
         }
     }
 }
