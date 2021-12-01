@@ -27,12 +27,6 @@ namespace CrudApi.Infra.Data.Repositories
             return await _productContext.Products.FindAsync(id);
         }
 
-        public async Task<Product> GetProductsCategoryAsync(int? id)
-        {
-            return await _productContext.Products.Include(c => c.Category)
-                .SingleOrDefaultAsync(p => p.Id == id);
-        }
-
         public async Task<IEnumerable<Product>> GetProductsAsync()
         {
             return await _productContext.Products.ToListAsync();
@@ -50,6 +44,12 @@ namespace CrudApi.Infra.Data.Repositories
             _productContext.Update(product);
             await _productContext.SaveChangesAsync();
             return product;
+        }
+
+        public async Task<Product> GetProductCategoryAsync(int? id)
+        {
+            return await _productContext.Products.Include(c => c.Category)
+                .SingleOrDefaultAsync(p => p.Id == id);
         }
     }
 }

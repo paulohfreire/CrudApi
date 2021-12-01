@@ -1,4 +1,7 @@
-﻿using CrudApi.Domain.Interfaces;
+﻿using CrudApi.Application.Interfaces;
+using CrudApi.Application.Mappings;
+using CrudApi.Application.Services;
+using CrudApi.Domain.Interfaces;
 using CrudApi.Infra.Data.Context;
 using CrudApi.Infra.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +20,11 @@ namespace CrudApi.Infra.IoC
 
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
+
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IProductService, ProductService>();
+
+            services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
 
             return services;
         }

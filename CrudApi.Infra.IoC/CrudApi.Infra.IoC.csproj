@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\CrudApi.Application\CrudApi.Application.csproj" />
     <ProjectReference Include="..\CrudApi.Domain\CrudApi.Domain.csproj" />
     <ProjectReference Include="..\CrudApi.Infra.Data\CrudApi.Infra.Data.csproj" />
