@@ -13,8 +13,4 @@
     <ProjectReference Include="..\CrudApi.Domain\CrudApi.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Products\Handlers\" />
-  </ItemGroup>
-
 </Project>

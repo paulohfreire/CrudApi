@@ -4,9 +4,11 @@ using CrudApi.Application.Services;
 using CrudApi.Domain.Interfaces;
 using CrudApi.Infra.Data.Context;
 using CrudApi.Infra.Data.Repositories;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace CrudApi.Infra.IoC
 {
@@ -25,6 +27,9 @@ namespace CrudApi.Infra.IoC
             services.AddScoped<IProductService, ProductService>();
 
             services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
+
+            var myhandlers = AppDomain.CurrentDomain.Load("CrudApi.Application");
+            services.AddMediatR(myhandlers);
 
             return services;
         }

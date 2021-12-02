@@ -47,7 +47,7 @@ namespace CrudApi.WebUi
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Controller}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
