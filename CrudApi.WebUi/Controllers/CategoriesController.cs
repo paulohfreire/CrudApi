@@ -36,5 +36,34 @@ namespace CrudApi.WebUi.Controllers
             }
             return View(category);
         }
+
+        [HttpGet()]
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null) return NotFound();
+
+            var categoryDto = await _categoryService.GetById(id);
+
+            if (categoryDto == null) return NotFound();
+            return View(categoryDto);
+        }
+
+        [HttpPost()]
+        public async Task<IActionResult> Edit(CategoryDTO categoryDto)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    await _categoryService.Update(categoryDto);
+                }
+                catch (System.Exception)
+                {
+                    throw;
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(categoryDto);
+        }
     }
 }
