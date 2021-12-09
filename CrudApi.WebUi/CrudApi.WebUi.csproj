@@ -13,4 +13,8 @@
     <ProjectReference Include="..\CrudApi.Infra.IoC\CrudApi.Infra.IoC.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\images\" />
+  </ItemGroup>
+
 </Project>

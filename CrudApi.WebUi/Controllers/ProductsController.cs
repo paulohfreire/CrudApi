@@ -1,7 +1,9 @@
 ﻿using CrudApi.Application.DTOs;
 using CrudApi.Application.Interfaces;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace CrudApi.WebUi.Controllers
@@ -10,10 +12,12 @@ namespace CrudApi.WebUi.Controllers
     {
         private readonly IProductService _productService;
         private readonly ICategoryService _categoryService;
-        public ProductsController(IProductService productService, ICategoryService categoryService)
+        private readonly IWebHostEnvironment _environment;
+        public ProductsController(IProductService productService, ICategoryService categoryService, IWebHostEnvironment environment)
         {
             _productService = productService;
             _categoryService = categoryService;
+            _environment = environment;
         }
         [HttpGet]
         public async Task<IActionResult> Index()
@@ -67,5 +71,41 @@ namespace CrudApi.WebUi.Controllers
             return View(productDto);
         }
 
+        [HttpGet()]
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+                return NotFound();
+            var productDto = await _productService.GetById(id);
+
+            if (productDto == null) return NotFound();
+
+            return View(productDto);
+        }
+
+        [HttpPost(), ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            await _productService.Remove(id);
+            return RedirectToAction("Index");
+        }
+
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+                return NotFound();
+
+            var productDto = await _productService.GetById(id);
+
+            if (productDto == null) return NotFound();
+
+            var wwwroot = _environment.WebRootPath;
+            var image = Path.Combine(wwwroot, "images\\" + productDto.Image);
+            var exists = System.IO.File.Exists(image);
+            ViewBag.ImageExist = exists;
+
+            return View(productDto);
+
+        }
     }
 }
