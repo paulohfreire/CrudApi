@@ -43,7 +43,7 @@ namespace CrudApi.Domain.Entities
                 "Preço inválido.");
             DomainExceptionValidation.When(stock < 0,
                 "Estoque inválido.");
-            DomainExceptionValidation.When(image?.Length < 250,
+            DomainExceptionValidation.When(image?.Length < 0,
                "Imagem inválida. Tente novamente.");
 
             Name = name;

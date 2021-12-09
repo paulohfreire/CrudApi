@@ -9,7 +9,7 @@ namespace CrudApi.Application.DTOs
         [Required(ErrorMessage = "Nome é campo obrigatório")]
         [MinLength(3)]
         [MaxLength(100)]
-        [DisplayName("Name")]
+        [DisplayName("Nome")]
         public string Name { get; set; }
     }
 }
