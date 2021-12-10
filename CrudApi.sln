@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrudApi.Infra.IoC", "CrudAp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrudApi.WebUi", "CrudApi.WebUi\CrudApi.WebUi.csproj", "{54347304-2DD1-4CC7-83C0-8D98A72D31C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrudApi.Domain.Tests", "CrudApi.Domain.Tests\CrudApi.Domain.Tests.csproj", "{CD709B9C-B325-49F1-8E4C-5852394856ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrudApi.Domain.Tests", "CrudApi.Domain.Tests\CrudApi.Domain.Tests.csproj", "{CD709B9C-B325-49F1-8E4C-5852394856ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrudApi.Api", "CrudApi.Api\CrudApi.Api.csproj", "{8E160CC1-E5B5-471E-9907-F66E9BF657D3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{CD709B9C-B325-49F1-8E4C-5852394856ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CD709B9C-B325-49F1-8E4C-5852394856ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CD709B9C-B325-49F1-8E4C-5852394856ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E160CC1-E5B5-471E-9907-F66E9BF657D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E160CC1-E5B5-471E-9907-F66E9BF657D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E160CC1-E5B5-471E-9907-F66E9BF657D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E160CC1-E5B5-471E-9907-F66E9BF657D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
